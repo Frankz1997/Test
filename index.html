@@ -1,1 +1,40 @@
-<h1> Hello World </h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check-in & Check-out</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        img { margin: 10px; width: 200px; height: 200px; }
+        #status { font-size: 18px; margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <h2>Escanea para Registrar Check-in / Check-out</h2>
+    
+    <!-- Códigos QR actualizados -->
+    <p><b>Check-in</b></p>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://frankz1997.github.io/Test/check?tipo=checkin" alt="Check-in QR">
+
+    <p><b>Check-out</b></p>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://frankz1997.github.io/Test/check?tipo=checkout" alt="Check-out QR">
+
+    <h2>Estado Actual</h2>
+    <p id="status"></p>
+
+    <script>
+        function actualizarEstado() {
+            let checkin = localStorage.getItem('checkin') || "No registrado";
+            let checkout = localStorage.getItem('checkout') || "No registrado";
+
+            document.getElementById('status').innerHTML = 
+                `🕒 <b>Check-in:</b> ${checkin} <br> 🕛 <b>Check-out:</b> ${checkout}`;
+        }
+
+        actualizarEstado();
+    </script>
+
+</body>
+</html>
