@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procesando...</title>
+    <script>
+        window.onload = function () {
+            // Obtener el parámetro 'tipo' de la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const tipo = urlParams.get('tipo');
+            if (tipo === 'checkin' || tipo === 'checkout') {
+                let ahora = new Date().toLocaleString();
+                localStorage.setItem(tipo, ahora);
+
+                // Redirigir a la página principal
+                alert(tipo.toUpperCase() + " registrado con éxito!");
+                window.location.href = "index.html"; 
+            } else {
+                alert("QR inválido.");
+                window.location.href = "index.html";
+            }
+        };
+    </script>
+</head>
+<body>
+    <h2>Procesando...</h2>
+</body>
+</html>
