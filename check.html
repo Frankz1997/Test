@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Procesando...</title>
+    <title>Registro</title>
     <script>
-        window.onload = function () {
-            // Obtener el parámetro 'tipo' de la URL
-            const urlParams = new URLSearchParams(window.location.search);
-            const tipo = urlParams.get('tipo');
-            if (tipo === 'checkin' || tipo === 'checkout') {
-                let ahora = new Date().toLocaleString();
-                localStorage.setItem(tipo, ahora);
+        window.onload = function() {
+            // Obtener el tipo de check desde la URL
+            const params = new URLSearchParams(window.location.search);
+            const tipo = params.get('tipo');
 
-                // Redirigir a la página principal
-                alert(tipo.toUpperCase() + " registrado con éxito!");
-                window.location.href = "index.html"; 
-            } else {
-                alert("QR inválido.");
-                window.location.href = "index.html";
+            if (tipo === 'checkin') {
+                localStorage.setItem('checkin', new Date().toLocaleString());
+                alert("✅ Check-in registrado con éxito");
+            } else if (tipo === 'checkout') {
+                localStorage.setItem('checkout', new Date().toLocaleString());
+                alert("✅ Check-out registrado con éxito");
             }
+
+            // Redirigir a index.html después de 1 segundo
+            setTimeout(() => {
+                window.location.href = "https://frankz1997.github.io/Test/";
+            }, 1000);
         };
     </script>
 </head>
@@ -27,3 +29,4 @@
     <h2>Procesando...</h2>
 </body>
 </html>
+
